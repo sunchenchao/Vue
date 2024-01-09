@@ -2,7 +2,7 @@
  * @Author: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
  * @Date: 2024-01-08 00:30:59
  * @LastEditors: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
- * @LastEditTime: 2024-01-08 17:23:22
+ * @LastEditTime: 2024-01-08 20:24:52
  * @FilePath: \Vue\index.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -18,7 +18,10 @@
 
 <body>
     <div id="app" class="app">
-        wo de min zi shi {{name}}
+        <input type="text" v-model:value="one">
+        <input type="text" v-model:value="two">
+        <span>{{fullName}}</span>
+
     </div>
     <script src="../vue.js"></script>
     <script>
@@ -28,7 +31,31 @@
         const app = new Vue({
             el: "#app",
             data: {
-                name: "sunchenchao"
+                name: "sunchenchao",
+                one: "",
+                two: ""
+
+            },
+            methods: {
+                // fullName() {
+                //     return this.one + this.two;
+
+                // }
+            },
+            computed: {
+                //什么时候调用？1.初次读取fullName 2.所监听的数据就发生改变
+                fullName: {
+                    get() {
+                        console.log("1");
+                        return this.one + "-" + this.two;
+                    },
+                    set() {
+                        //set是可选的  可以不写的
+                    }
+                    //只有确定不修改 只有获取可以简写
+                    // funName(){}
+
+                }
 
             }
 

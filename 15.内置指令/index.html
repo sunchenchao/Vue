@@ -2,7 +2,7 @@
  * @Author: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
  * @Date: 2024-01-08 00:30:59
  * @LastEditors: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
- * @LastEditTime: 2024-01-08 17:23:22
+ * @LastEditTime: 2024-01-09 13:18:16
  * @FilePath: \Vue\index.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -18,7 +18,21 @@
 
 <body>
     <div id="app" class="app">
-        wo de min zi shi {{name}}
+        <!-- v-bind
+            v-model
+        v-for
+        v-on
+        v-if
+        v-else
+        v-show
+        v-text 用文字系代替到文本中的内总
+        b-node
+        v-cloak 在vue加载完成就是会删除 可以用css选中属性 然后操作
+        v-once 只有第一次渲染的时候不渲染 后面就是会改变
+    -->
+        <div v-text="tt"></div>
+        <div v-html="ht"></div>
+        <div v-big="n"></div>
     </div>
     <script src="../vue.js"></script>
     <script>
@@ -28,8 +42,17 @@
         const app = new Vue({
             el: "#app",
             data: {
-                name: "sunchenchao"
+                name: "sunchenchao",
+                tt: "sadf",
+                ht: "htasdfsd",
+                n: 10
 
+            },
+            directives: {
+                //第一个参数就是 操作的dom元素 后面的binding就是内容
+                big(element, binding) {
+
+                }
             }
 
         })

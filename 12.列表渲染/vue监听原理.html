@@ -2,7 +2,7 @@
  * @Author: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
  * @Date: 2024-01-08 00:30:59
  * @LastEditors: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
- * @LastEditTime: 2024-01-08 17:23:22
+ * @LastEditTime: 2024-01-08 23:25:27
  * @FilePath: \Vue\index.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -18,21 +18,45 @@
 
 <body>
     <div id="app" class="app">
-        wo de min zi shi {{name}}
+        <button @click="addsex">addsex</button>
+        <button @click="arradd">arradd</button>
+        <p>{{studnet.name}}</p>
+        <p v-if="studnet.sex">{{studnet.sex}}</p>
+        <ul>
+            <li v-for="v in studnet.hobby">{{v}}</li>
+        </ul>
     </div>
     <script src="../vue.js"></script>
     <script>
         //取消vue的提示
         //使用live server 来启动一个网站的服务
+        //修改一个数组 直接改一行vue无法监听到内容
+        //vue如何监听对象的改变？
         Vue.config.productionTip = false;
         const app = new Vue({
             el: "#app",
             data: {
-                name: "sunchenchao"
-
-            }
+                name: "sunchenchao",
+                studnet: {
+                    name: "suncc",
+                    hobby: [1, 2, 3]
+                }
+            },
+            methods: {
+                addsex() {
+                    Vue.set(this.studnet, "sex", "nan");
+                },
+                arradd() {
+                    this.studnet.hobby.push(4)
+                    //替换数组也是可以改变的
+                    this.studnet.hobby = [8952, 4454, 54, 8]
+                }
+            },
 
         })
+
+    //追加属性Vue.set(target,key,val) target 是要再vm._data.student 要再观察者里面加上
+    //vm.$set(vm._data.student,"sex","女")  就是vm.student 是一样的
     </script>
 </body>
 

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let obj = {
+        x: 100
+
+    };
+    // vue中的_data 就是data
+    Object.defineProperty(obj, "x", {
+        get() {
+            // console.log("被获取了");
+            return obj.x;
+
+        },
+        set(value) {
+            console.log("被修改了");
+            obj.x = value;
+
+        }
+    })
+</script>
+
+</html>

@@ -2,7 +2,7 @@
  * @Author: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
  * @Date: 2024-01-08 00:30:59
  * @LastEditors: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
- * @LastEditTime: 2024-01-08 17:23:22
+ * @LastEditTime: 2024-01-09 17:23:44
  * @FilePath: \Vue\index.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -18,18 +18,45 @@
 
 <body>
     <div id="app" class="app">
+        <!-- 插值语法 -->
         wo de min zi shi {{name}}
+        <!-- v-bind简写 : 指令语法   -->
+        <a v-bind:href="url">ttt</a>
+
+        <school></school>
     </div>
     <script src="../vue.js"></script>
     <script>
         //取消vue的提示
         //使用live server 来启动一个网站的服务
         Vue.config.productionTip = false;
+
+        // Vue.component("hello", "sdf");
+        // 全局注册
+
+        //组件data必须要是方向 创建组件
+        const school = Vue.extend({
+            name: "asdf",//指定标签名字
+            data() {
+                return {
+                    school: "sdfs",
+                    age: 18
+                }
+            },
+            template: `
+            <div>{{school}}-{{age}} </div>
+            `,
+        })
         const app = new Vue({
             el: "#app",
             data: {
-                name: "sunchenchao"
+                name: "sunchenchao",
+                url: "www.baidu.com"
 
+            },
+            components: {
+                //注册组件 组件可以访问到主的组件中的内容
+                school: school,
             }
 
         })

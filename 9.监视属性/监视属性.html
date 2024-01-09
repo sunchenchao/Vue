@@ -2,7 +2,7 @@
  * @Author: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
  * @Date: 2024-01-08 00:30:59
  * @LastEditors: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
- * @LastEditTime: 2024-01-08 17:23:22
+ * @LastEditTime: 2024-01-08 20:57:25
  * @FilePath: \Vue\index.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -30,6 +30,33 @@
             data: {
                 name: "sunchenchao"
 
+            },
+            methods: {
+
+            },
+            computed: {
+
+                info() {
+                    return;
+                }
+
+            },
+
+            watch: {
+                name: {
+                    deep: true,//默认不监视内部值的改变  但是开启后就可以监视对象内部的内容
+                    immediate: true,//初始化的时候调用
+                    //这个handle是固定写法
+                    handler(newValue, oldValue) {
+                        console.log("修改了");
+                        this.name = "sdfsd";
+
+                    }
+                }
+                //监视简写
+                // name(newValue, oldValue) {
+
+                // }
             }
 
         })
